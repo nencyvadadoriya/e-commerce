@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cust-1",
+    "name": "Priya Sharma",
+    "email": "priya@example.com",
+    "phone": "+91 98201 12345",
+    "totalOrders": 3,
+    "totalSpent": 4897,
+    "status": "Active",
+    "createdAt": "2026-01-10T10:00:00.000Z"
+  },
+  {
+    "id": "cust-2",
+    "name": "Aman Verma",
+    "email": "aman@example.com",
+    "phone": "+91 98110 54321",
+    "totalOrders": 1,
+    "totalSpent": 2799,
+    "status": "Active",
+    "createdAt": "2026-02-14T11:20:00.000Z"
+  },
+  {
+    "id": "cust-3",
+    "name": "Riya Patel",
+    "email": "riya@example.com",
+    "phone": "+91 97234 88990",
+    "totalOrders": 2,
+    "totalSpent": 5397,
+    "status": "Active",
+    "createdAt": "2026-03-01T08:45:00.000Z"
+  }
+]

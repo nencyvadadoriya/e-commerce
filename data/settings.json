@@ -1,0 +1,12 @@
+{
+  "storeName": "Nava Studio",
+  "supportEmail": "support@nava.com",
+  "supportPhone": "+91 98765 43210",
+  "currency": "INR",
+  "taxRate": 18,
+  "freeShippingThreshold": 999,
+  "shippingFee": 99,
+  "address": "102 Design Quarter, Bandra West, Mumbai 400050",
+  "enableCOD": true,
+  "enableCardPayment": true
+}

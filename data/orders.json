@@ -1,0 +1,120 @@
+[
+  {
+    "id": "ord-1786897829564",
+    "orderNumber": "NAV-2523",
+    "customerName": "Priya Sharma",
+    "customerEmail": "priya@example.com",
+    "customerPhone": "+91 98201 12345",
+    "shippingAddress": {
+      "line": "402 Sunrise Towers, Juhu",
+      "city": "Mumbai",
+      "pincode": "400049"
+    },
+    "items": [
+      {
+        "productId": "1786897766950",
+        "name": "test",
+        "image": "/uploads/112cd732-cb0e-4e61-8cb0-d5eb7514e66b.webp",
+        "brand": "test",
+        "category": "Men",
+        "price": 19922,
+        "quantity": 2
+      }
+    ],
+    "subtotal": 39844,
+    "discount": 0,
+    "shipping": 0,
+    "total": 39844,
+    "paymentStatus": "Paid",
+    "orderStatus": "Confirmed",
+    "createdAt": "2026-08-16T16:30:29.564Z"
+  },
+  {
+    "id": "ord-101",
+    "orderNumber": "NAV-9021",
+    "customerName": "Priya Sharma",
+    "customerEmail": "priya@example.com",
+    "customerPhone": "+91 98201 12345",
+    "shippingAddress": {
+      "line": "402 Sunrise Towers, Juhu",
+      "city": "Mumbai",
+      "pincode": "400049"
+    },
+    "items": [
+      {
+        "productId": "1",
+        "name": "Linen Relaxed Shirt",
+        "price": 1499,
+        "quantity": 1
+      }
+    ],
+    "subtotal": 1499,
+    "discount": 0,
+    "shipping": 0,
+    "total": 1499,
+    "paymentStatus": "Paid",
+    "orderStatus": "Delivered",
+    "createdAt": "2026-08-14T10:30:00.000Z"
+  },
+  {
+    "id": "ord-102",
+    "orderNumber": "NAV-9022",
+    "customerName": "Aman Verma",
+    "customerEmail": "aman@example.com",
+    "customerPhone": "+91 98110 54321",
+    "shippingAddress": {
+      "line": "12-B MG Road",
+      "city": "Bengaluru",
+      "pincode": "560001"
+    },
+    "items": [
+      {
+        "productId": "4",
+        "name": "Court Classic Sneakers",
+        "price": 2999,
+        "quantity": 1
+      }
+    ],
+    "subtotal": 2999,
+    "discount": 200,
+    "shipping": 0,
+    "total": 2799,
+    "couponCode": "NAVAWELCOME",
+    "paymentStatus": "Paid",
+    "orderStatus": "Shipped",
+    "createdAt": "2026-08-15T14:20:00.000Z"
+  },
+  {
+    "id": "ord-103",
+    "orderNumber": "NAV-9023",
+    "customerName": "Riya Patel",
+    "customerEmail": "riya@example.com",
+    "customerPhone": "+91 97234 88990",
+    "shippingAddress": {
+      "line": "78 Satellite Colony",
+      "city": "Ahmedabad",
+      "pincode": "380015"
+    },
+    "items": [
+      {
+        "productId": "2",
+        "name": "Sculpted Shoulder Bag",
+        "price": 2199,
+        "quantity": 1
+      },
+      {
+        "productId": "6",
+        "name": "Minimal Gold Hoops",
+        "price": 999,
+        "quantity": 1
+      }
+    ],
+    "subtotal": 3198,
+    "discount": 0,
+    "shipping": 0,
+    "total": 3198,
+    "paymentStatus": "Paid",
+    "orderStatus": "Processing",
+    "createdAt": "2026-08-16T09:15:00.000Z"
+  }
+]

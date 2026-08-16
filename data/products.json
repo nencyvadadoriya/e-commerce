@@ -1,0 +1,249 @@
+[
+  {
+    "id": "1786897766950",
+    "name": "test",
+    "slug": "test",
+    "brand": "test",
+    "category": "Men",
+    "subcategory": "test",
+    "originalPrice": 1233,
+    "sellingPrice": 19922,
+    "discount": 0,
+    "stock": 10,
+    "rating": 4.8,
+    "reviewCount": 1,
+    "image": "/uploads/112cd732-cb0e-4e61-8cb0-d5eb7514e66b.webp",
+    "images": [
+      "/uploads/112cd732-cb0e-4e61-8cb0-d5eb7514e66b.webp",
+      "/uploads/b4f2ce58-02b3-4fa3-8ae8-45863c0ea025.webp",
+      "/uploads/f3e7c02c-7e99-4b81-91c3-8bfefdee0eca.jpg",
+      "/uploads/eeddb523-4f67-4f5d-81fb-345b8e9b2f3f.jpg"
+    ],
+    "badge": "New",
+    "description": "test",
+    "active": true,
+    "sku": "test",
+    "size": "",
+    "color": "",
+    "hasVariants": false,
+    "variants": []
+  },
+  {
+    "id": "1",
+    "name": "Linen Relaxed Shirt",
+    "slug": "linen-relaxed-shirt",
+    "brand": "Northline",
+    "category": "Men",
+    "subcategory": "Shirts",
+    "originalPrice": 2499,
+    "sellingPrice": 1499,
+    "discount": 40,
+    "rating": 4.8,
+    "reviewCount": 128,
+    "stock": 24,
+    "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=900&q=85",
+    "images": [
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=900&q=85"
+    ],
+    "badge": "Bestseller",
+    "active": true,
+    "sku": "NL-SH-01",
+    "hasVariants": true,
+    "variants": [
+      {
+        "id": "var-1-blue",
+        "name": "Navy Blue",
+        "color": "Navy Blue",
+        "size": "XL",
+        "price": 1599,
+        "originalPrice": 2499,
+        "stock": 6,
+        "sku": "NL-SH-01-NAV",
+        "images": [
+          "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=900&q=85"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Sculpted Shoulder Bag",
+    "slug": "sculpted-shoulder-bag",
+    "brand": "Mysa Studio",
+    "category": "Accessories",
+    "subcategory": "Handbags",
+    "originalPrice": 3299,
+    "sellingPrice": 2199,
+    "discount": 33,
+    "rating": 4.7,
+    "reviewCount": 86,
+    "stock": 12,
+    "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85",
+    "images": [
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85"
+    ],
+    "badge": "New",
+    "description": "Structured silhouette in vegan leather with antique brass finish hardware and interior organizing pocket.",
+    "active": true,
+    "sku": "MS-SB-02",
+    "hasVariants": true,
+    "variants": [
+      {
+        "id": "var-2-tan",
+        "name": "Tan Caramel",
+        "color": "Caramel",
+        "price": 2199,
+        "originalPrice": 3299,
+        "stock": 7,
+        "sku": "MS-SB-02-TAN",
+        "images": [
+          "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85"
+        ]
+      },
+      {
+        "id": "var-2-black",
+        "name": "Noir Black",
+        "color": "Black",
+        "price": 2199,
+        "originalPrice": 3299,
+        "stock": 5,
+        "sku": "MS-SB-02-BLK",
+        "images": [
+          "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Everyday Knit Set",
+    "slug": "everyday-knit-set",
+    "brand": "Aster & Row",
+    "category": "Women",
+    "subcategory": "Co-ords",
+    "originalPrice": 2899,
+    "sellingPrice": 1899,
+    "discount": 34,
+    "rating": 4.9,
+    "reviewCount": 214,
+    "stock": 18,
+    "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=900&q=85",
+    "images": [
+      "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=900&q=85"
+    ],
+    "badge": "Trending",
+    "description": "Fine-ribbed modal blend matching set designed for seamless day-to-evening dressing.",
+    "active": true,
+    "sku": "AR-KS-03"
+  },
+  {
+    "id": "4",
+    "name": "Court Classic Sneakers",
+    "slug": "court-classic-sneakers",
+    "brand": "Nava Studio",
+    "category": "Footwear",
+    "subcategory": "Sneakers",
+    "originalPrice": 4299,
+    "sellingPrice": 2999,
+    "discount": 30,
+    "rating": 4.6,
+    "reviewCount": 64,
+    "stock": 15,
+    "image": "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=900&q=85",
+    "images": [
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=900&q=85"
+    ],
+    "badge": "Popular",
+    "description": "Minimalist low-top leather sneaker with cushioned memory foam insole and vulcanized rubber sole.",
+    "active": true,
+    "sku": "NV-SN-04"
+  },
+  {
+    "id": "5",
+    "name": "Oversized Trench Coat",
+    "slug": "oversized-trench-coat",
+    "brand": "Northline",
+    "category": "Men",
+    "subcategory": "Jackets",
+    "originalPrice": 5999,
+    "sellingPrice": 3999,
+    "discount": 33,
+    "rating": 4.9,
+    "reviewCount": 43,
+    "stock": 8,
+    "image": "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=900&q=85",
+    "images": [
+      "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=900&q=85"
+    ],
+    "badge": "Premium",
+    "description": "Water-resistant cotton twill trench coat with raglan sleeves and belted waist.",
+    "active": true,
+    "sku": "NL-TC-05"
+  },
+  {
+    "id": "6",
+    "name": "Minimal Gold Hoops",
+    "slug": "minimal-gold-hoops",
+    "brand": "Mysa Studio",
+    "category": "Jewellery",
+    "subcategory": "Earrings",
+    "originalPrice": 1599,
+    "sellingPrice": 999,
+    "discount": 38,
+    "rating": 4.8,
+    "reviewCount": 172,
+    "stock": 31,
+    "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=85",
+    "images": [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=85"
+    ],
+    "badge": "Bestseller",
+    "description": "18k gold-plated hypoallergenic lightweight everyday hoops.",
+    "active": true,
+    "sku": "MS-GH-06"
+  },
+  {
+    "id": "7",
+    "name": "Soft Cotton Co-ord",
+    "slug": "soft-cotton-co-ord",
+    "brand": "Aster & Row",
+    "category": "Women",
+    "subcategory": "Dresses",
+    "originalPrice": 3199,
+    "sellingPrice": 2099,
+    "discount": 34,
+    "rating": 4.7,
+    "reviewCount": 97,
+    "stock": 16,
+    "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85",
+    "images": [
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85"
+    ],
+    "badge": "New",
+    "description": "Chic lounge co-ord set with elasticated waist and cropped tee.",
+    "active": true,
+    "sku": "AR-CC-07"
+  },
+  {
+    "id": "8",
+    "name": "Everyday Carry Tote",
+    "slug": "everyday-carry-tote",
+    "brand": "Mysa Studio",
+    "category": "Accessories",
+    "subcategory": "Backpacks",
+    "originalPrice": 2699,
+    "sellingPrice": 1699,
+    "discount": 37,
+    "rating": 4.6,
+    "reviewCount": 55,
+    "stock": 9,
+    "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85",
+    "images": [
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85"
+    ],
+    "badge": "Limited",
+    "description": "Spacious canvas tote with laptop sleeve and inner zip pocket.",
+    "active": true,
+    "sku": "MS-TT-08"
+  }
+]

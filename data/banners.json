@@ -1,0 +1,46 @@
+[
+  {
+    "id": "ban-1",
+    "title": "Made for your pace.",
+    "eyebrow": "The new everyday",
+    "description": "Thoughtful essentials, considered details, and pieces that stay with you.",
+    "image": "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1800&q=85",
+    "buttonText": "Explore the edit",
+    "buttonLink": "#shop",
+    "active": true,
+    "order": 1
+  },
+  {
+    "id": "ban-2",
+    "title": "A little more considered.",
+    "eyebrow": "Soft structure",
+    "description": "Easy layers and quiet details for days that move at their own rhythm.",
+    "image": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1800&q=85",
+    "buttonText": "Shop Women",
+    "buttonLink": "/category/women",
+    "active": true,
+    "order": 2
+  },
+  {
+    "id": "ban-3",
+    "title": "The art of doing less.",
+    "eyebrow": "Off-duty edit",
+    "description": "Relaxed silhouettes, useful textures, and the pieces you reach for again.",
+    "image": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85",
+    "buttonText": "Shop Men",
+    "buttonLink": "/category/men",
+    "active": true,
+    "order": 3
+  },
+  {
+    "id": "ban-4",
+    "title": "Keep the good things close.",
+    "eyebrow": "New classics",
+    "description": "Objects and accessories that finish the day without trying too hard.",
+    "image": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1800&q=85",
+    "buttonText": "Shop Accessories",
+    "buttonLink": "/category/accessories",
+    "active": true,
+    "order": 4
+  }
+]

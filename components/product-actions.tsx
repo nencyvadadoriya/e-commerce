@@ -1,0 +1,5 @@
+'use client'
+import Link from 'next/link'
+import { Heart, ShoppingBag } from 'lucide-react'
+import { useCommerce, type CommerceProduct } from '@/components/commerce-provider'
+export function ProductActions({ product }: { product: CommerceProduct }) { const { addToCart, toggleWishlist, isWishlisted } = useCommerce(); const liked = isWishlisted(product.id); return <div className="mt-8 flex flex-col gap-3 sm:flex-row"><button disabled={product.stock <= 0} onClick={() => addToCart(product)} className="flex flex-1 items-center justify-center gap-2 bg-primary px-5 py-4 text-sm font-semibold text-primary-foreground disabled:cursor-not-allowed disabled:opacity-50"><ShoppingBag size={17} /> {product.stock > 0 ? 'Add to bag' : 'Out of stock'}</button><button onClick={() => toggleWishlist(product)} className="flex items-center justify-center gap-2 border border-border px-5 py-4 text-sm font-semibold"><Heart size={17} className={liked ? 'fill-accent text-accent' : ''} /> {liked ? 'Saved' : 'Save'}</button><Link href="/checkout" className="flex items-center justify-center border border-primary px-5 py-4 text-sm font-semibold text-primary">Buy now</Link></div> }

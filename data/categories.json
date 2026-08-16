@@ -1,0 +1,222 @@
+[
+  {
+    "id": "1",
+    "name": "Men",
+    "slug": "men",
+    "group": "Apparel",
+    "description": "Men's apparel & footwear",
+    "subcategories": [
+      {
+        "name": "Shirts",
+        "slug": "shirts",
+        "active": true
+      },
+      {
+        "name": "T-Shirts",
+        "slug": "t-shirts",
+        "active": true
+      },
+      {
+        "name": "Jeans",
+        "slug": "jeans",
+        "active": true
+      },
+      {
+        "name": "Jackets",
+        "slug": "jackets",
+        "active": true
+      }
+    ],
+    "active": true
+  },
+  {
+    "id": "2",
+    "name": "Women",
+    "slug": "women",
+    "group": "Apparel",
+    "description": "Women's dresses, tops & co-ords",
+    "subcategories": [
+      {
+        "name": "Dresses",
+        "slug": "dresses",
+        "active": true
+      },
+      {
+        "name": "Tops",
+        "slug": "tops",
+        "active": true
+      },
+      {
+        "name": "Co-ords",
+        "slug": "co-ords",
+        "active": true
+      },
+      {
+        "name": "Sarees",
+        "slug": "sarees",
+        "active": true
+      }
+    ],
+    "active": true
+  },
+  {
+    "id": "3",
+    "name": "Kids",
+    "slug": "kids",
+    "group": "Apparel",
+    "description": "Kids clothing & footwear",
+    "subcategories": [
+      {
+        "name": "Boys Clothing",
+        "slug": "boys-clothing",
+        "active": true
+      },
+      {
+        "name": "Girls Clothing",
+        "slug": "girls-clothing",
+        "active": true
+      },
+      {
+        "name": "Toys",
+        "slug": "toys",
+        "active": true
+      }
+    ],
+    "active": true
+  },
+  {
+    "id": "4",
+    "name": "Footwear",
+    "slug": "footwear",
+    "group": "Fashion",
+    "description": "Sneakers, sandals & shoes",
+    "subcategories": [
+      {
+        "name": "Sneakers",
+        "slug": "sneakers",
+        "active": true
+      },
+      {
+        "name": "Casual Shoes",
+        "slug": "casual-shoes",
+        "active": true
+      },
+      {
+        "name": "Sandals",
+        "slug": "sandals",
+        "active": true
+      }
+    ],
+    "active": true
+  },
+  {
+    "id": "5",
+    "name": "Accessories",
+    "slug": "accessories",
+    "group": "Lifestyle",
+    "description": "Bags, belts & sunglasses",
+    "subcategories": [
+      {
+        "name": "Handbags",
+        "slug": "handbags",
+        "active": true
+      },
+      {
+        "name": "Backpacks",
+        "slug": "backpacks",
+        "active": true
+      },
+      {
+        "name": "Wallets",
+        "slug": "wallets",
+        "active": true
+      }
+    ],
+    "active": true
+  },
+  {
+    "id": "6",
+    "name": "Jewellery",
+    "slug": "jewellery",
+    "group": "Lifestyle",
+    "description": "Minimalist & occasion jewellery",
+    "subcategories": [
+      {
+        "name": "Earrings",
+        "slug": "earrings",
+        "active": true
+      },
+      {
+        "name": "Necklaces",
+        "slug": "necklaces",
+        "active": true
+      },
+      {
+        "name": "Rings",
+        "slug": "rings",
+        "active": true
+      }
+    ],
+    "active": true
+  },
+  {
+    "id": "7",
+    "name": "Home",
+    "slug": "home",
+    "group": "Living",
+    "description": "Decor & living essentials",
+    "subcategories": [
+      {
+        "name": "Home Décor",
+        "slug": "home-decor",
+        "active": true
+      },
+      {
+        "name": "Candles",
+        "slug": "candles",
+        "active": true
+      }
+    ],
+    "active": true
+  },
+  {
+    "id": "8",
+    "name": "Beauty",
+    "slug": "beauty",
+    "group": "Personal Care",
+    "description": "Skincare & makeup",
+    "subcategories": [
+      {
+        "name": "Makeup",
+        "slug": "makeup",
+        "active": true
+      },
+      {
+        "name": "Skincare",
+        "slug": "skincare",
+        "active": true
+      }
+    ],
+    "active": true
+  },
+  {
+    "id": "9",
+    "name": "GenZ",
+    "slug": "genz",
+    "group": "Trending",
+    "description": "Youth fits & aesthetic styles",
+    "subcategories": [
+      {
+        "name": "Trending Fits",
+        "slug": "trending-fits",
+        "active": true
+      },
+      {
+        "name": "Party Wear",
+        "slug": "party-wear",
+        "active": true
+      }
+    ],
+    "active": true
+  }
+]

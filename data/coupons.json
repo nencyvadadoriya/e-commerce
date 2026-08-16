@@ -1,0 +1,28 @@
+[
+  {
+    "id": "coup-1",
+    "code": "NAVAWELCOME",
+    "discountType": "percentage",
+    "discountValue": 10,
+    "minOrderValue": 999,
+    "maxDiscount": 500,
+    "usageLimit": 500,
+    "usedCount": 42,
+    "startDate": "2026-01-01",
+    "expiryDate": "2026-12-31",
+    "active": true
+  },
+  {
+    "id": "coup-2",
+    "code": "FLAT500",
+    "discountType": "fixed",
+    "discountValue": 500,
+    "minOrderValue": 2999,
+    "maxDiscount": 500,
+    "usageLimit": 200,
+    "usedCount": 18,
+    "startDate": "2026-02-01",
+    "expiryDate": "2026-08-31",
+    "active": true
+  }
+]
