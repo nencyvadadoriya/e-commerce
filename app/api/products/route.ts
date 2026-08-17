@@ -48,6 +48,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const query = searchParams.get('q')?.trim() ?? searchParams.get('search')?.trim()
   const category = searchParams.get('category')
+  const subcategory = searchParams.get('subcategory')
   const sort = searchParams.get('sort') ?? 'popular'
   const mode = searchParams.get('mode')
   const page = Math.max(1, Number(searchParams.get('page') ?? 1))
@@ -64,12 +65,12 @@ export async function GET(request: Request) {
     })
   }
 
-  const products = await getProductsStore(query, category ?? undefined, sort, page, limit)
+  const result = await getProductsStore(query, category ?? undefined, sort, page, limit, subcategory ?? undefined)
   return NextResponse.json({
-    products,
-    total: products.length,
-    page,
-    pages: Math.max(1, Math.ceil(products.length / limit)),
+    products: result.items,
+    total: result.total,
+    page: result.page,
+    pages: result.pages,
     source: 'store',
   })
 }

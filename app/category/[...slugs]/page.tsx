@@ -15,8 +15,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slugs
   const categoryName = matchedCategory ? matchedCategory.name : categoryLabel(categoryParam)
   const subcategoryName = subcategoryParam ? categoryLabel(subcategoryParam) : undefined
 
-  const allProducts = await getProductsStore(subcategoryName, categoryName)
-  const products = allProducts.map((p) => ({
+  const result = await getProductsStore(subcategoryName, categoryName)
+  const products = result.items.map((p) => ({
     id: p.id,
     name: p.name,
     brand: p.brand,

@@ -494,8 +494,9 @@ export async function getProductsStore(
   category?: string,
   sort = 'popular',
   page = 1,
-  limit = 50
-): Promise<ProductItem[]> {
+  limit = 50,
+  subcategory?: string
+): Promise<PaginatedResult<ProductItem>> {
   await ensureDbSynced()
   const db = await connectToDatabase()
   if (db) {
@@ -503,6 +504,9 @@ export async function getProductsStore(
       const filter: Record<string, unknown> = { active: { $ne: false } }
       if (category && category !== 'All') {
         filter.category = { $regex: new RegExp(`^${category}$`, 'i') }
+      }
+      if (subcategory && subcategory !== 'All') {
+        filter.subcategory = { $regex: new RegExp(`^${subcategory}$`, 'i') }
       }
       if (query) {
         filter.$or = [
@@ -519,13 +523,21 @@ export async function getProductsStore(
         'price-low': { sellingPrice: 1 },
         'price-high': { sellingPrice: -1 },
       }
-      const docs = await ProductModel.find(filter)
-        .sort(sortMap[sort] ?? sortMap.popular)
-        .skip((page - 1) * limit)
-        .limit(limit)
-        .lean()
+      const [docs, total] = await Promise.all([
+        ProductModel.find(filter)
+          .sort(sortMap[sort] ?? sortMap.popular)
+          .skip((page - 1) * limit)
+          .limit(limit)
+          .lean(),
+        ProductModel.countDocuments(filter),
+      ])
       if (docs && docs.length > 0) {
-        return docs.map((doc: any) => ({ ...doc, id: doc._id.toString() }))
+        return {
+          items: docs.map((doc: any) => ({ ...doc, id: doc._id.toString() })),
+          total,
+          page,
+          pages: Math.max(1, Math.ceil(total / limit)),
+        }
       }
     } catch {
     }
@@ -534,6 +546,9 @@ export async function getProductsStore(
   let items = [...memoryProducts].filter((p) => p.active !== false)
   if (category && category !== 'All') {
     items = items.filter((p) => p.category.toLowerCase() === category.toLowerCase())
+  }
+  if (subcategory && subcategory !== 'All') {
+    items = items.filter((p) => (p.subcategory ?? '').toLowerCase() === subcategory.toLowerCase())
   }
   if (query) {
     const q = query.toLowerCase()
@@ -544,7 +559,13 @@ export async function getProductsStore(
   if (sort === 'price-low') items.sort((a, b) => a.sellingPrice - b.sellingPrice)
   if (sort === 'price-high') items.sort((a, b) => b.sellingPrice - a.sellingPrice)
   if (sort === 'newest') items.sort((a, b) => Number(b.id) - Number(a.id))
-  return items.slice((page - 1) * limit, page * limit)
+  const total = items.length
+  return {
+    items: items.slice((page - 1) * limit, page * limit),
+    total,
+    page,
+    pages: Math.max(1, Math.ceil(total / limit)),
+  }
 }
 
 export async function getAllAdminProductsStore(

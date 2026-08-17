@@ -1,5 +1,35 @@
 [
   {
+    "id": "ord-1786982951057",
+    "orderNumber": "NAV-1683",
+    "customerName": "nency vadadoriya",
+    "customerEmail": "vadadoriyanency8@gmail.com",
+    "customerPhone": "9023582238",
+    "shippingAddress": {
+      "line": "d-204  vraj dharshan vraj chowk near sarthana jagatnaka , surat",
+      "city": "gujrat",
+      "pincode": "395001"
+    },
+    "items": [
+      {
+        "productId": "women-10",
+        "name": "Cropped Cashmere Blend Cardigan",
+        "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=900&q=85",
+        "brand": "Nava Studio",
+        "category": "Women",
+        "price": 1799,
+        "quantity": 2
+      }
+    ],
+    "subtotal": 3598,
+    "discount": 0,
+    "shipping": 0,
+    "total": 3598,
+    "paymentStatus": "Paid",
+    "orderStatus": "Confirmed",
+    "createdAt": "2026-08-17T16:09:11.057Z"
+  },
+  {
     "id": "ord-1786897829564",
     "orderNumber": "NAV-2523",
     "customerName": "Priya Sharma",

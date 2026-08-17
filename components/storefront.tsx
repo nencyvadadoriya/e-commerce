@@ -3,9 +3,10 @@
 import React, { useEffect, useMemo, useState, useCallback, memo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, ChevronDown, Menu, Search, ShoppingBag, X } from 'lucide-react'
+import { ArrowRight, ChevronDown, Heart, Menu, Search, ShoppingBag, X } from 'lucide-react'
 import { CartDrawer, ProductTile } from '@/components/commerce-surfaces'
 import { HeroSlider } from '@/components/hero-slider'
+import { Pagination } from '@/components/pagination'
 import { useCommerce } from '@/components/commerce-provider'
 import { categoryNavigation, categoryLabel, slugify } from '@/lib/category-navigation'
 
@@ -25,75 +26,50 @@ type Product = {
 
 const categories = ['All', 'Women', 'Men', 'Footwear', 'Accessories', 'Jewellery']
 
-export function Storefront() {
-  const [products, setProducts] = useState<Product[]>([])
-  const [category, setCategory] = useState('All')
-  const [query, setQuery] = useState('')
-  const [sort, setSort] = useState('popular')
+const PAGE_SIZE = 12
+
+/* ─────────────────────────────────────────────
+   Shared StoreHeader — used by Storefront + Shop
+───────────────────────────────────────────── */
+export function StoreHeader() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [megaMenu, setMegaMenu] = useState<string | null>(null)
   const [mobileCategory, setMobileCategory] = useState<string | null>(null)
-  const { cartCount, setCartOpen } = useCommerce()
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const controller = new AbortController()
-    setLoading(true)
-
-    const params = new URLSearchParams({
-      category: category,
-      sort: sort,
-      limit: '24',
-    })
-    if (query.trim()) params.set('q', query.trim())
-
-    fetch(`/api/products?${params}`, { signal: controller.signal })
-      .then((res) => {
-        if (!res.ok) throw new Error('Failed to fetch')
-        return res.json()
-      })
-      .then((data) => setProducts(data.products ?? []))
-      .catch((err) => {
-        if (err.name !== 'AbortError') setProducts([])
-      })
-      .finally(() => setLoading(false))
-
-    return () => controller.abort()
-  }, [category, query, sort])
+  const { cartCount, wishlist, setCartOpen } = useCommerce()
+  const wishlistCount = wishlist.length
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <>
       <div className="bg-primary px-4 py-2 text-center text-xs font-medium tracking-[0.18em] text-primary-foreground">
         PAN-INDIA DELIVERY · EASY 7-DAY RETURNS · CURATED FOR EVERYDAY
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
+      <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur" onMouseLeave={() => setMegaMenu(null)}>
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-4 lg:px-10">
           <button className="lg:hidden p-1" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
             <Menu size={22} />
           </button>
-          <a href="#top" className="font-serif text-2xl font-semibold tracking-tight text-primary">
+          <a href="/" className="font-serif text-2xl font-semibold tracking-tight text-primary">
             nava<span className="text-accent">.</span>
           </a>
 
-          <nav className="hidden items-center gap-6 text-sm font-medium lg:flex" onMouseLeave={() => setMegaMenu(null)}>
-            <Link href="/#shop" className="hover:text-primary transition">Shop</Link>
+          <nav className="hidden items-center gap-6 text-sm font-medium lg:flex">
+            <Link href="/" className="text-accent hover:opacity-80 transition font-semibold">Home</Link>
+            <Link href="/shop" className="hover:text-primary transition">Shop</Link>
             {Object.keys(categoryNavigation).map((slug) => (
-              <div key={slug} className="relative" onMouseEnter={() => setMegaMenu(slug)}>
+              <div key={slug} onMouseEnter={() => setMegaMenu(slug)}>
                 <Link href={`/category/${slug}`} className="inline-flex items-center gap-1 py-3 hover:text-primary transition">
                   {categoryLabel(slug)}
-                  <ChevronDown size={14} />
+                  <ChevronDown size={14} className={megaMenu === slug ? 'rotate-180 transition-transform' : 'transition-transform'} />
                 </Link>
-                {megaMenu === slug && <MegaMenu slug={slug} />}
               </div>
             ))}
-            <Link href="/#offers" className="text-accent hover:opacity-80 transition font-semibold">Offers</Link>
           </nav>
 
           <form action="/search" className="hidden max-w-sm flex-1 items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 lg:flex shadow-xs">
             <Search size={17} className="text-muted-foreground" />
-            <input name="q" defaultValue={query} placeholder="Search products, brands & more" className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground" />
+            <input name="q" placeholder="Search products, brands & more" className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground" />
           </form>
 
           <div className="flex items-center gap-4">
@@ -102,7 +78,12 @@ export function Storefront() {
             </button>
             <Link href="/wishlist" aria-label="Wishlist" className="relative p-1 hover:text-accent transition">
               <span className="sr-only">Wishlist</span>
-              <span aria-hidden="true" className="text-lg">♡</span>
+              <Heart size={21} strokeWidth={1.7} />
+              {wishlistCount > 0 && (
+                <span className="absolute -right-1 -top-1 rounded-full bg-accent px-1.5 py-0.2 text-[10px] font-bold text-accent-foreground leading-none min-w-[17px] text-center">
+                  {wishlistCount}
+                </span>
+              )}
             </Link>
             <button aria-label="Shopping bag" className="relative p-1 hover:text-primary transition" onClick={() => setCartOpen(true)}>
               <ShoppingBag size={21} strokeWidth={1.7} />
@@ -113,11 +94,18 @@ export function Storefront() {
           </div>
         </div>
 
+        {/* Megamenu */}
+        {megaMenu && (
+          <div className="absolute left-0 right-0 top-full z-50 border-t border-border bg-background/98 shadow-2xl backdrop-blur-sm hidden lg:block">
+            <MegaMenu slug={megaMenu} onClose={() => setMegaMenu(null)} />
+          </div>
+        )}
+
         {searchOpen && (
           <div className="border-t border-border px-5 py-3 lg:hidden">
             <form action="/search" className="flex items-center gap-2 rounded-full border border-border px-4 py-2">
               <Search size={17} />
-              <input autoFocus name="q" defaultValue={query} placeholder="Search products" className="w-full bg-transparent text-sm outline-none" />
+              <input autoFocus name="q" placeholder="Search products" className="w-full bg-transparent text-sm outline-none" />
             </form>
           </div>
         )}
@@ -134,7 +122,7 @@ export function Storefront() {
               </button>
             </div>
             <nav className="mt-8 grid gap-4 font-medium text-sm">
-              <Link href="/#shop" onClick={() => setMenuOpen(false)} className="py-1">Shop All</Link>
+              <Link href="/shop" onClick={() => setMenuOpen(false)} className="py-1">Shop All</Link>
               {Object.keys(categoryNavigation).map((slug) => (
                 <div key={slug} className="border-b border-border pb-3">
                   <div className="flex items-center justify-between">
@@ -156,11 +144,70 @@ export function Storefront() {
                   )}
                 </div>
               ))}
-              <Link href="/#offers" onClick={() => setMenuOpen(false)} className="text-accent py-1">Offers</Link>
+              <Link href="/" onClick={() => setMenuOpen(false)} className="text-accent py-1">Home</Link>
             </nav>
           </aside>
         </div>
       )}
+    </>
+  )
+}
+
+/* ─────────────────────────────────────────────
+   Main Storefront (Home Page)
+───────────────────────────────────────────── */
+export function Storefront() {
+  const [products, setProducts] = useState<Product[]>([])
+  const [category, setCategory] = useState('All')
+  const [sort, setSort] = useState('popular')
+  const [page, setPage] = useState(1)
+  const [pages, setPages] = useState(1)
+  const [total, setTotal] = useState(0)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const controller = new AbortController()
+    setLoading(true)
+
+    const params = new URLSearchParams({
+      category: category,
+      sort: sort,
+      limit: String(PAGE_SIZE),
+      page: String(page),
+    })
+
+    fetch(`/api/products?${params}`, { signal: controller.signal })
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch')
+        return res.json()
+      })
+      .then((data) => {
+        setProducts(data.products ?? [])
+        setTotal(data.total ?? 0)
+        setPages(data.pages ?? 1)
+      })
+      .catch((err) => {
+        if (err.name !== 'AbortError') setProducts([])
+      })
+      .finally(() => setLoading(false))
+
+    return () => controller.abort()
+  }, [category, sort, page])
+
+  // Reset to page 1 when category or sort changes
+  const handleCategoryChange = useCallback((cat: string) => {
+    setPage(1)
+    setCategory(cat)
+  }, [])
+
+  const handleSortChange = useCallback((s: string) => {
+    setPage(1)
+    setSort(s)
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <StoreHeader />
 
       <main id="top">
         <section className="mx-auto max-w-[1440px] px-5 pt-6 lg:px-10 lg:pt-10">
@@ -196,7 +243,7 @@ export function Storefront() {
                 {categories.map((item) => (
                   <button
                     key={item}
-                    onClick={() => setCategory(item)}
+                    onClick={() => handleCategoryChange(item)}
                     className={`whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold transition ${
                       category === item
                         ? 'border-primary bg-primary text-primary-foreground shadow-xs'
@@ -211,11 +258,11 @@ export function Storefront() {
 
             <div className="mt-8 flex items-center justify-between border-y border-border py-3">
               <p className="text-xs font-medium text-muted-foreground">
-                {loading ? 'Finding pieces for you…' : `${products.length} pieces in this edit`}
+                {loading ? 'Finding pieces for you…' : `${total} pieces${total !== products.length ? ` · showing ${products.length}` : ''}`}
               </p>
               <label className="flex items-center gap-2 text-xs font-medium">
                 <span className="hidden text-muted-foreground sm:inline">Sort by</span>
-                <select value={sort} onChange={(e) => setSort(e.target.value)} className="bg-transparent font-semibold outline-none cursor-pointer">
+                <select value={sort} onChange={(e) => handleSortChange(e.target.value)} className="bg-transparent font-semibold outline-none cursor-pointer">
                   <option value="popular">Most Popular</option>
                   <option value="newest">Newest First</option>
                   <option value="price-low">Price: Low to High</option>
@@ -227,14 +274,14 @@ export function Storefront() {
 
             {loading ? (
               <div className="mt-8 grid grid-cols-2 gap-x-3 gap-y-8 md:grid-cols-3 lg:grid-cols-4">
-                {Array.from({ length: 8 }).map((_, i) => (
+                {Array.from({ length: PAGE_SIZE }).map((_, i) => (
                   <div key={i} className="aspect-[3/4] animate-pulse bg-muted rounded-xs" />
                 ))}
               </div>
             ) : products.length === 0 ? (
               <div className="p-16 text-center space-y-3">
                 <p className="font-serif text-2xl">No pieces in this edit.</p>
-                <button onClick={() => setCategory('All')} className="bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground">
+                <button onClick={() => handleCategoryChange('All')} className="bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground">
                   View All Products
                 </button>
               </div>
@@ -245,6 +292,8 @@ export function Storefront() {
                 ))}
               </div>
             )}
+
+            <Pagination page={page} pages={pages} onPageChange={setPage} />
           </div>
         </section>
 
@@ -313,25 +362,42 @@ export function Storefront() {
   )
 }
 
-const MegaMenu = memo(function MegaMenu({ slug }: { slug: string }) {
+const MegaMenu = memo(function MegaMenu({ slug, onClose }: { slug: string; onClose: () => void }) {
   const groups = categoryNavigation[slug] ?? []
   return (
-    <div className="absolute left-1/2 top-full z-40 hidden w-[min(860px,calc(100vw-40px))] -translate-x-1/2 border border-border bg-card p-6 shadow-2xl lg:block animate-in fade-in-50 duration-200">
-      <div className="grid grid-cols-3 gap-6">
+    <div className="mx-auto max-w-[1440px] px-10 py-8 animate-in fade-in-0 slide-in-from-top-1 duration-150">
+      <div className="grid grid-cols-3 gap-10">
         {groups.map((group) => (
           <div key={group.title}>
-            <Link href={`/category/${slug}/${slugify(group.title)}`} className="text-xs font-bold uppercase tracking-wider text-accent">
+            <Link
+              href={`/category/${slug}/${slugify(group.title)}`}
+              className="text-xs font-bold uppercase tracking-wider text-accent hover:opacity-80 transition"
+              onClick={onClose}
+            >
               {group.title}
             </Link>
-            <div className="mt-3 grid gap-2">
+            <div className="mt-4 grid gap-2.5">
               {group.items.map((item) => (
-                <Link key={item} href={`/category/${slug}/${slugify(item)}`} className="text-xs text-muted-foreground transition hover:text-foreground">
+                <Link
+                  key={item}
+                  href={`/category/${slug}/${slugify(item)}`}
+                  className="text-sm text-muted-foreground transition hover:text-foreground"
+                  onClick={onClose}
+                >
                   {item}
                 </Link>
               ))}
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-6 border-t border-border pt-4 flex items-center justify-between">
+        <Link href={`/category/${slug}`} className="text-xs font-semibold text-primary hover:underline" onClick={onClose}>
+          View all {categoryLabel(slug)} →
+        </Link>
+        <Link href="/shop" className="text-xs text-muted-foreground hover:text-foreground transition" onClick={onClose}>
+          Shop everything
+        </Link>
       </div>
     </div>
   )
